@@ -1,7 +1,7 @@
-const romanNumerals = require("../roman-numerals").romanNumerals;
+const { romanNumerals } = require('../roman-numerals');
 
-describe("#romanNumerals", () => {
-  it("should be true", () => {
+describe('#romanNumerals', () => {
+  it('should be true', () => {
     const actual = romanNumerals();
 
     const expected = true;
