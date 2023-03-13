@@ -1,10 +1,10 @@
-const { romanNumerals } = require('../roman-numerals');
+const { romanNumerals } = require("../roman-numerals");
 
-describe('#romanNumerals', () => {
-  it('should be true', () => {
-    const actual = romanNumerals();
+describe("#romanNumerals", () => {
+  it("should return 1 when given 'I'", () => {
+    const actual = romanNumerals("I");
 
-    const expected = true;
+    const expected = 1;
 
     expect(actual).to.equal(expected);
   });
