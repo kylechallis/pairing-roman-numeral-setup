@@ -13,8 +13,50 @@
  * M = 1000
  */
 
-const romanNumerals = () => {};
+const romanNumerals = (roman) => {
+  const romanToArabicMap = {
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000,
+  };
+
+  let arabicNumber = 0;
+  let prevValue = 0;
+  let repeatCount = 0;
+
+  for (let i = roman.length - 1; i >= 0; i--) {
+    const currentDigit = roman[i].toUpperCase();
+    const currentValue = romanToArabicMap[currentDigit];
+
+    if (currentValue === undefined) {
+      throw new Error(`Invalid Roman numeral: '${currentDigit}'`);
+    }
+
+    if (currentValue < prevValue) {
+      arabicNumber -= currentValue;
+    } else {
+      arabicNumber += currentValue;
+      if (currentValue === prevValue) {
+        repeatCount++;
+        if (repeatCount > 2) {
+          throw new Error("Invalid Roman numeral: too many repetitions of the same digit.");
+        }
+      } else {
+        repeatCount = 0;
+      }
+    }
+
+    prevValue = currentValue;
+  }
+
+  return arabicNumber;
+};
 
 module.exports = {
   romanNumerals,
 };
+
